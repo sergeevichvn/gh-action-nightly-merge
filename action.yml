@@ -5,9 +5,6 @@ branding:
   icon: 'git-merge'
   color: 'orange'
 inputs:
-  stable_branch:
-    description: 'Name of the stable branch'
-    required: true
   allow_ff:
     description: 'Allow fast forward merge'
     required: false

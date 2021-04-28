@@ -4,7 +4,6 @@ set -e
 
 echo
 echo "  'Nightly Merge Action' is using the following input:"
-echo "    - stable_branch = '$INPUT_STABLE_BRANCH'"
 echo "    - allow_ff = $INPUT_ALLOW_FF"
 echo "    - allow_git_lfs = $INPUT_GIT_LFS"
 echo "    - ff_only = $INPUT_FF_ONLY"
@@ -14,6 +13,8 @@ echo "    - user_email = $INPUT_USER_EMAIL"
 echo "    - push_token = $INPUT_PUSH_TOKEN = ${!INPUT_PUSH_TOKEN}"
 echo "    - dev_branch_pattern = '$INPUT_DEV_BRANCH_PATTERN'"
 echo
+
+STABLE_BRANCH=${GITHUB_REF##*/}
 
 if [[ $INPUT_ALLOW_FORKS != "true" ]]; then
   URI=https://api.github.com
