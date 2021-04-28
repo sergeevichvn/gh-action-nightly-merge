@@ -14,7 +14,7 @@ echo "    - push_token = $INPUT_PUSH_TOKEN = ${!INPUT_PUSH_TOKEN}"
 echo "    - dev_branch_pattern = '$INPUT_DEV_BRANCH_PATTERN'"
 echo
 
-STABLE_BRANCH=${GITHUB_REF##*/}
+export INPUT_STABLE_BRANCH=${GITHUB_REF##*/}
 
 if [[ $INPUT_ALLOW_FORKS != "true" ]]; then
   URI=https://api.github.com
@@ -43,6 +43,11 @@ git remote set-url origin https://x-access-token:${!INPUT_PUSH_TOKEN}@github.com
 git config --global user.name "$INPUT_USER_NAME"
 git config --global user.email "$INPUT_USER_EMAIL"
 
-git branch -r --list $INPUT_DEV_BRANCH_PATTERN
-
+for branch in $(git for-each-ref refs/heads  | grep release-*.*.*$ | cut -d/ -f3-); do
+	if [[ "$branch" > "$INPUT_STABLE_BRANCH" ]]; then
+		echo "Start update $branch"
+		export INPUT_DEVELOPMENT_BRANCH=$branch
+		echo "Merge $INPUT_STABLE_BRANCH to $INPUT_DEVELOPMENT_BRANCH"
+	fi
+done;
 
