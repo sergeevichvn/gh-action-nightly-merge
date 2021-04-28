@@ -52,7 +52,7 @@ for branch in $(git branch -r --list $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 		echo "Merge $INPUT_STABLE_BRANCH to $INPUT_DEVELOPMENT_BRANCH"
 		pwd
 		ls
-		./entrypoint.sh
+		../entrypoint.sh
 	fi
 done;
 
