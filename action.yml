@@ -31,7 +31,8 @@ inputs:
     default: 'actions@github.com'
   push_token:
     description: 'Environment variable containing the token to use for push'
-    required: true
+    required: false
+    default: 'GITHUB_TOKEN'
   dev_branch_pattern:
     description: 'Environment variable containing the token to use for push'
     required: false
