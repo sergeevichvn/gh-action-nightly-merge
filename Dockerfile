@@ -9,6 +9,7 @@ LABEL "com.github.actions.color"="orange"
 
 RUN apk --no-cache add bash curl git git-lfs jq
 
+ADD wrapper.sh /wrapper.sh
 ADD entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/wrapper.sh"]
