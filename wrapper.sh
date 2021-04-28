@@ -44,7 +44,8 @@ git config --global user.name "$INPUT_USER_NAME"
 git config --global user.email "$INPUT_USER_EMAIL"
 
 echo "Start search branches"
-for branch in $(git for-each-ref refs/heads  | grep release-*.*.*$ | cut -d/ -f3-); do
+git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f3-
+for branch in $(git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f3-); do
   echo "Current branch: $branch"
 	if [[ "$branch" > "$INPUT_STABLE_BRANCH" ]]; then
 		echo "Start update $branch"
