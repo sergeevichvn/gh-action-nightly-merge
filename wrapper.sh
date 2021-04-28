@@ -43,7 +43,9 @@ git remote set-url origin https://x-access-token:${!INPUT_PUSH_TOKEN}@github.com
 git config --global user.name "$INPUT_USER_NAME"
 git config --global user.email "$INPUT_USER_EMAIL"
 
+echo "Start search branches"
 for branch in $(git for-each-ref refs/heads  | grep release-*.*.*$ | cut -d/ -f3-); do
+  echo "Current branch: $branch"
 	if [[ "$branch" > "$INPUT_STABLE_BRANCH" ]]; then
 		echo "Start update $branch"
 		export INPUT_DEVELOPMENT_BRANCH=$branch
