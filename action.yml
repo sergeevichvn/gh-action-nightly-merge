@@ -36,7 +36,7 @@ inputs:
   dev_branch_pattern:
     description: 'Environment variable containing the token to use for push'
     required: false
-    default: '*release-*'
+    default: 'origin/release-*.*.*'
 runs:
   using: 'docker'
   image: 'Dockerfile'
