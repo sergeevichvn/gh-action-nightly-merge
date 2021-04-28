@@ -43,8 +43,14 @@ git remote set-url origin https://x-access-token:${!INPUT_PUSH_TOKEN}@github.com
 git config --global user.name "$INPUT_USER_NAME"
 git config --global user.email "$INPUT_USER_EMAIL"
 
-echo "Start search branches"
+echo "1"
+git for-each-ref refs/heads
+echo "2"
+git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN
+echo "3"
 git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f3-
+
+echo "Start search branches"
 for branch in $(git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f3-); do
   echo "Current branch: $branch"
 	if [[ "$branch" > "$INPUT_STABLE_BRANCH" ]]; then
