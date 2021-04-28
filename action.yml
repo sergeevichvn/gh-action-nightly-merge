@@ -7,12 +7,7 @@ branding:
 inputs:
   stable_branch:
     description: 'Name of the stable branch'
-    required: false
-    default: 'master'
-  development_branch:
-    description: 'Name of the development branch'
-    required: false
-    default: 'devel'
+    required: true
   allow_ff:
     description: 'Allow fast forward merge'
     required: false
@@ -39,8 +34,11 @@ inputs:
     default: 'actions@github.com'
   push_token:
     description: 'Environment variable containing the token to use for push'
+    required: true
+  dev_branch_pattern:
+    description: 'Environment variable containing the token to use for push'
     required: false
-    default: 'GITHUB_TOKEN'
+    default: '*release-*'
 runs:
   using: 'docker'
   image: 'Dockerfile'
