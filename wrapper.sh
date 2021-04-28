@@ -44,11 +44,9 @@ git config --global user.name "$INPUT_USER_NAME"
 git config --global user.email "$INPUT_USER_EMAIL"
 
 echo "1"
-git for-each-ref refs/heads
+git branch -r --list *release-*
 echo "2"
-git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN
-echo "3"
-git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f3-
+git branch -r --list *release-* | cut -d/ -f2-
 
 echo "Start search branches"
 for branch in $(git for-each-ref refs/heads  | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f3-); do
