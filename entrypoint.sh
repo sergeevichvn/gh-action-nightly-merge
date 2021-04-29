@@ -28,7 +28,10 @@ if [[ $INPUT_GIT_LFS == "true" ]]; then
   git lfs pull
 fi
 
-# Push the branch
-git push origin $INPUT_DEVELOPMENT_BRANCH
+RESULT=$?
+echo "Result $RESULT"
 
-echo "Result $?"
+if [[ $RESULT == 0 ]]; then
+  # Push the branch
+  git push origin $INPUT_DEVELOPMENT_BRANCH
+fi
