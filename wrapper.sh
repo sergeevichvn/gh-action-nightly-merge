@@ -43,7 +43,7 @@ for branch in $(git branch -r --list $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 		if [[ $RESULT == 0 ]]; then
 		  export MERGED_LIST=$INPUT_DEVELOPMENT_BRANCH:$MERGED_LIST
 		else
-		  export $CONFLICT_LIST=$INPUT_DEVELOPMENT_BRANCH:$CONFLICT_LIST
+		  export CONFLICT_LIST=$INPUT_DEVELOPMENT_BRANCH:$CONFLICT_LIST
 		fi
 	fi
 done;
