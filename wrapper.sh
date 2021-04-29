@@ -45,3 +45,5 @@ for branch in $(git branch -r --list $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 	fi
 done;
 
+echo "MERGED: $MERGED_LIST"
+echo "FAIL: $CONFLICT_LIST"

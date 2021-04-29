@@ -29,8 +29,9 @@ if [[ $INPUT_GIT_LFS == "true" ]]; then
 fi
 
 if [[ $RESULT == *"CONFLICT"* ]]; then
-  echo "SOME_CONFLICT"
+  export CONFLICT_LIST=$INPUT_DEVELOPMENT_BRANCH:$CONFLICT_LIST
 else
   # Push the branch
   git push origin $INPUT_DEVELOPMENT_BRANCH
+  export MERGED_LIST=$INPUT_DEVELOPMENT_BRANCH:$MERGED_LIST
 fi
