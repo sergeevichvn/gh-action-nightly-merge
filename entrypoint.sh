@@ -2,7 +2,7 @@
 
 set -o xtrace
 
-rm -rf $(pwd)/*
+rm -rf $(pwd)
 git fetch origin $INPUT_STABLE_BRANCH
 (git checkout $INPUT_STABLE_BRANCH && git pull)||git checkout -b $INPUT_STABLE_BRANCH origin/$INPUT_STABLE_BRANCH
 
