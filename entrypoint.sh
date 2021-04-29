@@ -29,7 +29,7 @@ if [[ $INPUT_GIT_LFS == "true" ]]; then
 fi
 
 if [[ $RESULT == *"CONFLICT"* ]]; then
-  git rm -r -f *
+  git reset --hard
   exit 1
 else
   # Push the branch
