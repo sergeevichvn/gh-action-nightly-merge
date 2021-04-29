@@ -39,8 +39,6 @@ for branch in $(git branch -r --list $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 		echo "Start update $branch"
 		export INPUT_DEVELOPMENT_BRANCH=$branch
 		echo "Merge $INPUT_STABLE_BRANCH to $INPUT_DEVELOPMENT_BRANCH"
-		pwd
-		ls
 		../../entrypoint.sh
 	fi
 done;
