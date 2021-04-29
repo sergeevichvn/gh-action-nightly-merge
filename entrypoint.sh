@@ -21,15 +21,14 @@ echo
 set -o xtrace
 
 # Do the merge
-git merge $FF_MODE --no-edit $INPUT_STABLE_BRANCH
+RESULT=git merge $FF_MODE --no-edit $INPUT_STABLE_BRANCH
 
 # Pull lfs if enabled
 if [[ $INPUT_GIT_LFS == "true" ]]; then
   git lfs pull
 fi
 
-RESULT=$?
-echo "Result $RESULT"
+echo "Result as String\n $RESULT"
 
 if [[ $RESULT == 0 ]]; then
   # Push the branch
