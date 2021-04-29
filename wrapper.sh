@@ -51,3 +51,6 @@ done;
 
 echo "MERGED: $MERGED_LIST"
 echo "FAIL: $CONFLICT_LIST"
+
+set -e
+[ -z "$CONFLICT_LIST" ] && exit 1
