@@ -50,7 +50,7 @@ for branch in $(git branch -r --list $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 done;
 
 set -e
-if [ ! -z ${$MERGED_LIST##*( )} ];
+if [ ! -z ${MERGED_LIST##*( )} ];
 then
   echo "MERGED: $MERGED_LIST"
 fi
