@@ -30,3 +30,5 @@ fi
 
 # Push the branch
 git push origin $INPUT_DEVELOPMENT_BRANCH
+
+echo "Result $?"
