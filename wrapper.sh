@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set +e
 
 echo
 echo "  'Nightly Merge Action' is using the following input:"
