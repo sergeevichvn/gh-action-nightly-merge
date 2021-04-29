@@ -28,9 +28,9 @@ if [[ $INPUT_GIT_LFS == "true" ]]; then
   git lfs pull
 fi
 
-echo "Result as String\n $RESULT"
-
-if [[ $RESULT == 0 ]]; then
+if [[ $RESULT == *"CONFLICT"* ]]; then
+  echo "SOME_CONFLICT"
+else
   # Push the branch
   git push origin $INPUT_DEVELOPMENT_BRANCH
 fi
