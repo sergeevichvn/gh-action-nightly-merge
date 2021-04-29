@@ -49,8 +49,13 @@ for branch in $(git branch -r --list $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 	fi
 done;
 
-echo "MERGED: $MERGED_LIST"
-echo "FAIL: $CONFLICT_LIST"
-
 set -e
-[ ! -z ${CONFLICT_LIST##*( )} ] && exit 1
+if [ ! -z ${$MERGED_LIST##*( )} ];
+then
+  echo "MERGED: $MERGED_LIST"
+fi
+
+if [ ! -z ${CONFLICT_LIST##*( )} ]; then
+	echo "FAIL: $CONFLICT_LIST"
+	exit 1
+fi
