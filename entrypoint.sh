@@ -2,7 +2,6 @@
 
 set -o xtrace
 
-git rm -r -f *
 git fetch origin $INPUT_STABLE_BRANCH
 (git checkout $INPUT_STABLE_BRANCH && git pull)||git checkout -b $INPUT_STABLE_BRANCH origin/$INPUT_STABLE_BRANCH
 
@@ -30,6 +29,7 @@ if [[ $INPUT_GIT_LFS == "true" ]]; then
 fi
 
 if [[ $RESULT == *"CONFLICT"* ]]; then
+  git rm -r -f *
   exit 1
 else
   # Push the branch
