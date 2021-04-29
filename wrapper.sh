@@ -39,7 +39,12 @@ for branch in $(git branch -r --list $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 		echo "Start update $branch"
 		export INPUT_DEVELOPMENT_BRANCH=$branch
 		echo "Merge $INPUT_STABLE_BRANCH to $INPUT_DEVELOPMENT_BRANCH"
-		../../entrypoint.sh
+		RESULT=$(../../entrypoint.sh)
+		if [[ $RESULT == 0 ]]; then
+		  export MERGED_LIST=$INPUT_DEVELOPMENT_BRANCH:$MERGED_LIST
+		else
+		  export $CONFLICT_LIST=$INPUT_DEVELOPMENT_BRANCH:$CONFLICT_LIST
+		fi
 	fi
 done;
 
