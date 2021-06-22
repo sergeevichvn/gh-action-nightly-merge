@@ -30,9 +30,9 @@ inputs:
     required: false
     default: 'GITHUB_TOKEN'
   dev_branch_pattern:
-    description: 'Environment variable containing the token to use for push'
+    description: 'Regex pattern target banch'
     required: false
-    default: 'origin/release-*.*.*'
+    default: 'origin/release-[0-9]\+\.[0-9]\+\.[0-9]\+$'
 runs:
   using: 'docker'
   image: 'Dockerfile'
