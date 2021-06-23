@@ -20,7 +20,7 @@ inputs:
   user_name:
     description: 'User name for git commits'
     required: false
-    default: 'GitHub Nightly Merge Action'
+    default: 'Auto-merge Action'
   user_email:
     description: 'User email for git commits'
     required: false
