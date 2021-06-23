@@ -13,13 +13,6 @@ if git merge-base --is-ancestor $INPUT_STABLE_BRANCH $INPUT_DEVELOPMENT_BRANCH; 
   exit 0
 fi;
 
-set +o xtrace
-echo
-echo "  'Nightly Merge Action' is trying to merge the '$INPUT_STABLE_BRANCH' branch ($(git log -1 --pretty=%H $INPUT_STABLE_BRANCH))"
-echo "  into the '$INPUT_DEVELOPMENT_BRANCH' branch ($(git log -1 --pretty=%H $INPUT_DEVELOPMENT_BRANCH))"
-echo
-set -o xtrace
-
 # Do the merge
 RESULT=$(git merge $FF_MODE --no-edit $INPUT_STABLE_BRANCH)
 
