@@ -33,7 +33,7 @@ git config --global user.name "$INPUT_USER_NAME"
 git config --global user.email "$INPUT_USER_EMAIL"
 
 echo "Start search branches"
-for branch in $(git branch -r | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); do
+for branch in $(git branch -r | grep $INPUT_DEV_BRANCH_PATTERN | sort | cut -d/ -f2-); do
   echo "Current branch: $branch"
 	if [[ "$branch" > "$INPUT_STABLE_BRANCH" ]]; then
 		echo "Start update $branch"
@@ -46,6 +46,8 @@ for branch in $(git branch -r | grep $INPUT_DEV_BRANCH_PATTERN | cut -d/ -f2-); 
 		else
 		  export CONFLICT_LIST=$INPUT_DEVELOPMENT_BRANCH:$CONFLICT_LIST
 		fi
+
+		break
 	fi
 done;
 
