@@ -46,6 +46,7 @@ for branch in $(git branch -r | grep $INPUT_DEV_BRANCH_PATTERN | sort | cut -d/ 
 		  echo "#4. SUCCESS! MERGED $INPUT_STABLE_BRANCH to $INPUT_DEVELOPMENT_BRANCH"
 		else
 		  echo "#4. FAIL! MERGED $INPUT_STABLE_BRANCH to $INPUT_DEVELOPMENT_BRANCH"
+		  exit 1
 		fi
 
 		break
