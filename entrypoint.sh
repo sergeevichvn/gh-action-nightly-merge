@@ -23,6 +23,7 @@ fi
 
 if [[ $RESULT == *"CONFLICT"* ]]; then
   git reset --hard
+  echo "exit1-test"
   exit 1
 else
   # Push the branch
